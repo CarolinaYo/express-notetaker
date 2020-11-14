@@ -1,5 +1,5 @@
 //Dependencies
-const express = require ('express');
+const express = require("express");
 
 
 const app = express();
@@ -12,8 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //Router
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// require("./routes/apiRoute")(app);
+require("./routes/htmlRoute")(app);
 
 //Listener
 app.listen(PORT, function() {
