@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //Router
-// require("./routes/apiRoute")(app);
+require("./routes/apiRoute")(app);
 require("./routes/htmlRoute")(app);
 
 //Listener
