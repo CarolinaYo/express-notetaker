@@ -1,5 +1,7 @@
 //dependencies
 const fs = require("fs");
+const { v4: uuidv4 } = require('uuid');
+
 // internal file
 const noteData = require("../db/db.json");
 
@@ -17,66 +19,57 @@ module.exports = function(app) {
                 res.send(parseNote); 
 
             }      
+        });
     });
-  
-    // API POST Requests
+
+
+    // API POST Requests ????
     app.post("/api/notes", function(req, res) {
         //receive new note to save on the request body 
         //apply unique id:
          
-        let randomId = Math.floor((Math.random() * 100) + 1); 
-
         let newNote = [{
-            id = randomId,
-            title = req.body.title,
-            text = req.body.text
+            id: uuidv4(),
+            title: req.body.title,
+            text: req.body.text
         }];
 
         fs.readFile("./db/db.json", (err, data) => {
             if (err) 
               console.log(err); 
-            else { 
-               
-                fs.writeFile("./db/db.json", note, err => {
-                    if (err) {
-                      console.error(err)
-                      return
-                    }
-                    let allNote = JSON.stringify(note);
-                    newNote.push(allNote)
-                  })
+
+            
+            console.log("data: ", JSON.parse(data));
+            let allNotes = JSON.parse(data);
+            console.log("allNotes: ", allNotes);
+
+            allNotes.push(newNote);
+
+            fs.writeFile("./db/db.json", JSON.stringify(allNotes), err => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+                res.send(newNote); 
+                })
             //return new note to the client
                 
-                res.send(data); 
+            
 
-            }      
+              
 
         })
-
-
-        //add the note to db.json 
-        fs.writeFile("./db/db.json", newNote, (err) => { 
-            if (err) 
-              console.log(err); 
-            else { 
-                //return new note to the client
-                res.send(noteData); 
-            } //????
-      
-
-       
-        
       
     });
  
   
-    app.delete("/api/notes/:id", function(req, res) {
-      // Need to read all notes from db.json and remove note with the given id property and reqerite notes tot eh db.json file
+//     app.delete("/api/notes/:id", function(req, res) {
+//       // Need to read all notes from db.json and remove note with the given id property and reqerite notes tot eh db.json file
 
 
 
 
 
-    });
-  };
+//     });
+}
 
