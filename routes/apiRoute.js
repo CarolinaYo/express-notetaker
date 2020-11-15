@@ -28,20 +28,18 @@ module.exports = function(app) {
         //receive new note to save on the request body 
         //apply unique id:
          
-        let newNote = [{
+        let newNote = {
             id: uuidv4(),
             title: req.body.title,
             text: req.body.text
-        }];
+        };
 
         fs.readFile("./db/db.json", (err, data) => {
             if (err) 
               console.log(err); 
 
             
-            console.log("data: ", JSON.parse(data));
             let allNotes = JSON.parse(data);
-            console.log("allNotes: ", allNotes);
 
             allNotes.push(newNote);
 
@@ -53,23 +51,39 @@ module.exports = function(app) {
                 res.send(newNote); 
                 })
             //return new note to the client
-                
-            
+                   
 
               
-
         })
       
     });
  
   
-//     app.delete("/api/notes/:id", function(req, res) {
-//       // Need to read all notes from db.json and remove note with the given id property and reqerite notes tot eh db.json file
+    app.delete("/api/notes/:id", function(req, res) {
+//       // Need to read all notes from db.json and remove note with the given id property and rewrite notes tot eh db.json file
+        fs.readFile("./db/db.json", (err, data) => {
+            let noteIndex;
+            if (err) 
+            console.log(err); 
+        
+            let allNotes = JSON.parse(data);
+            allNotes.filter(function(note, index){
+                if (note.id === req.params.id){
+                    noteIndex = index
+                    return;
+                }
 
+            })
+            allNotes.splice(noteIndex);
 
-
-
-
-//     });
+            fs.writeFile("./db/db.json", JSON.stringify(allNotes), err => {
+                if (err) {
+                    console.error(err)
+                    return
+                }
+                res.sendStatus(200); 
+            })
+         });
+    
+    })
 }
-
