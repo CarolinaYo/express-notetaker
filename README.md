@@ -15,7 +15,7 @@ Then after sucessfull connection, user need to type _localhost:3000_ in the brow
 ### Steps required running the app through __Heroku__:
 
 This application is also hosted in Heroku web server. \
-Click this link ################## to access the application.
+Click this link: https://warm-cove-79367.herokuapp.com/ to access this application.
 
 
 ## Usage 
@@ -48,4 +48,4 @@ Adding a new note: To add a new note, user need to click on the pencil icon disp
 
 ## MAINTAINER 
 This is an individual assignment created by Carolina Yoedhana.
-* GitHub Link: 
+* GitHub repo: git@github.com:CarolinaYo/express-notetaker.git
