@@ -45,7 +45,9 @@ To delete: User can delete a note by clicking the delete icon displayed on the r
 Adding a new note: To add a new note, user need to click on the pencil icon displayed on the top right corner of the page. \
 ![new_notes](public/assets/images/new_note.gif)
 
+## CONTRIBUTOR
+* UW Fullstack Web Developer Bootcamp Course
 
 ## MAINTAINER 
-This is an individual assignment created by Carolina Yoedhana.
+This is an individual assignment maintained by Carolina Yoedhana.
 * GitHub repo: git@github.com:CarolinaYo/express-notetaker.git
