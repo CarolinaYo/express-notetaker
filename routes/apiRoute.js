@@ -60,8 +60,8 @@ module.exports = function (app) {
           return;
         }
       });
-
-      allNotes.splice(noteIndex);
+      
+      allNotes.splice(noteIndex, 1);
 
       fs.writeFile("./db/db.json", JSON.stringify(allNotes), (err) => {
         if (err) {
