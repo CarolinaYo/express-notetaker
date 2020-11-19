@@ -50,4 +50,4 @@ Adding a new note: To add a new note, user need to click on the pencil icon disp
 
 ## MAINTAINER 
 This is an individual assignment maintained by Carolina Yoedhana.
-* GitHub repo: git@github.com:CarolinaYo/express-notetaker.git
+* GitHub repo: https://github.com/CarolinaYo/express-notetaker.git
